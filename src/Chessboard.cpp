@@ -304,6 +304,7 @@ map<pair<int, int>, set<pair<int, int>>> ChessBoard::legal_moves() {
         piece_moves.erase(e);
       }
 
+      if (piece_moves.empty()) continue; 
 
       possible_moves.insert({pair<int, int>(i, j), piece_moves});
     }
