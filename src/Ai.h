@@ -4,6 +4,8 @@
 class AI;
 
 #include "Chessboard.h"
+#include <unistd.h>
+#include <iostream>
 
 using namespace std;
 

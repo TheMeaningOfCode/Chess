@@ -561,7 +561,11 @@ int Game::run() {
             if (*from == nullptr || (*from)->color != board->turn) continue;   //no piece, or opponent pieces
             modify_coordinates(from, a, b);
 
+            //no legal move for this piece
+            if (!board->legal_moves().count(pair<int, int>(a, b))) continue;
+
             from_moves = board->legal_moves().at(pair<int, int>(a, b));
+
             hold = true;  //accessed
           }
           break;

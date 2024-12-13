@@ -6,6 +6,7 @@
 #include "Queen.h"
 #include "King.h"
 #include "Bishop.h"
+#include <unistd.h>
 
 #include <deque>
 #include <string>
@@ -134,14 +135,14 @@ void ChessBoard::promote() {
   for (int i = 0; i < 8; i++) {
     if (dynamic_cast<Pawn*>(m_square[i][0])) {
       st.back().promotion = true;
-      st.back().m_extra = new Queen(st.back().m_to.first, st.back().m_to.second , turn);
+      st.back().m_extra = new Queen(st.back().m_to.first, st.back().m_to.second, turn);
       all_pieces.push_back(st.back().m_extra);
       m_square[i][0] = st.back().m_extra;
 
     }
     if (dynamic_cast<Pawn*>(m_square[i][7])) {
       st.back().promotion = true;
-      st.back().m_extra = new Queen(st.back().m_to.first, st.back().m_to.second , turn);
+      st.back().m_extra = new Queen(st.back().m_to.first, st.back().m_to.second, turn);
       all_pieces.push_back(st.back().m_extra);
       m_square[i][7] = st.back().m_extra;
 
@@ -150,19 +151,22 @@ void ChessBoard::promote() {
 }
 
 void ChessBoard::change_promotion(string name) {
-  return;
-  if (name == "e") {
-    st.back().m_extra = new Rook(st.back().m_to.first, st.back().m_to.second, turn);
+  if (name == "q") {
+    st.back().m_extra = new Queen(st.back().m_to.first, st.back().m_to.second, turn);
   }
-  else if (name == "k") {
-    st.back().m_extra = new Knight(st.back().m_to.first, st.back().m_to.second, turn);
+  if (name == "r") {
+    st.back().m_extra = new Rook(st.back().m_to.first, st.back().m_to.second, turn);
   }
   else if (name == "b") {
     st.back().m_extra = new Bishop(st.back().m_to.first, st.back().m_to.second, turn);
   }
+  else if (name == "k") {
+    st.back().m_extra = new Knight(st.back().m_to.first, st.back().m_to.second, turn);
+  }
   else return;
   
   all_pieces.push_back(st.back().m_extra);
+  //m_square[st.back().m_to.first][st.back().m_to.second] = st.back().m_extra;
 }
 
 
