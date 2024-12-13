@@ -151,10 +151,12 @@ void ChessBoard::promote() {
 }
 
 void ChessBoard::change_promotion(string name) {
+  turn == "White" ? turn = "Black" : turn = "White";
+
   if (name == "q") {
     st.back().m_extra = new Queen(st.back().m_to.first, st.back().m_to.second, turn);
   }
-  if (name == "r") {
+  else if (name == "r") {
     st.back().m_extra = new Rook(st.back().m_to.first, st.back().m_to.second, turn);
   }
   else if (name == "b") {
@@ -163,10 +165,14 @@ void ChessBoard::change_promotion(string name) {
   else if (name == "k") {
     st.back().m_extra = new Knight(st.back().m_to.first, st.back().m_to.second, turn);
   }
-  else return;
-  
+  else {
+    turn == "White" ? turn = "Black" : turn = "White";
+    return;
+  }
+
+  turn == "White" ? turn = "Black" : turn = "White";
   all_pieces.push_back(st.back().m_extra);
-  //m_square[st.back().m_to.first][st.back().m_to.second] = st.back().m_extra;
+  m_square[st.back().m_to.first][st.back().m_to.second] = st.back().m_extra;
 }
 
 
@@ -406,20 +412,16 @@ void ChessBoard::undo_move() {
   st.pop_back();
 }
 
-
-
-
-
 bool ChessBoard::occupied(pair<int, int> pos) {
   return m_square[pos.first][pos.second];
 }
+
 string ChessBoard::picture_name(int x, int y) {
   string filename;
   filename.clear();
   filename.append(m_square[x][y]->get_color()).append("_").append(m_square[x][y]->get_name());
   return filename;
 }
-
 
 bool ChessBoard::game_over() {
   map<pair<int, int>, set<pair<int, int>>> possible_moves = legal_moves();
