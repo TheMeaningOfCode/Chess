@@ -3,7 +3,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <cstdlib>
-//#include <filesystem>
+#include <filesystem>
 #include <sstream>
 #include <fstream>
 
@@ -411,34 +411,20 @@ void Game::loading() {
   cout << "Select Game File:" << endl;
 
   //print all files
-  //filesystem::path path = "examples/Saves/";
-  //for (const auto& f : filesystem::directory_iterator(path)) {
-  //  cout << f.path().filename() << endl;
-  //}
-
-
-  ifstream outFile;
-
-  cin >> text_input;
-  while(cin.fail()) {
-    cin.clear();
-    cin.ignore(1000000, '\n');
-    cin >> text_input;
+  filesystem::path path = "examples/Saves/";
+  for (const auto& f : filesystem::directory_iterator(path)) {
+    cout << f.path().filename() << endl;
   }
 
 
-
-    
-  file = "examples/Saves/" + text_input;
-
-  outFile.open(file);
+  ifstream outFile;  
 
   while (!outFile.is_open()) {
     cin.clear();
     cin.ignore(1000000, '\n');
     cin >> text_input;
 
-    file = "examples/Saves" + text_input;
+    file = "examples/Saves/" + text_input;
     outFile.open(file);
     cout << "File does not exist" << endl;
   }
@@ -558,7 +544,7 @@ int Game::run() {
           if (e.button.button == SDL_BUTTON_LEFT) {
             from = assign_click_to_square_coordinates();
             if (!from) continue;                                              //click outside chessboard
-            if (*from == nullptr || (*from)->color != board->turn) continue;   //no piece, or opponent pieces
+            if (*from == nullptr || (*from)->color != board->turn) continue;  //no piece, or opponent pieces
             modify_coordinates(from, a, b);
 
             //no legal move for this piece
