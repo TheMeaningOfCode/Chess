@@ -14,7 +14,7 @@ class King : public Piece {
     ~King();
 
     set<pair<int, int>> castling(const ChessBoard* board);
-    set<pair<int, int>> move(const ChessBoard* board);
+    set<pair<int, int>> move(const ChessBoard* board) override;
 
     int get_value() override;
     string get_name() override;

@@ -24,6 +24,7 @@ int run()                       - the main game loop
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+
 #include "Chessboard.h"
 #include "Piece.h"
 #include "Bishop.h"

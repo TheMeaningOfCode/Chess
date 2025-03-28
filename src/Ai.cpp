@@ -1,5 +1,6 @@
 #include "Ai.h"
 
+//not AI, opponent
 
 AI::AI(ChessBoard* board) {
   this->board = board;

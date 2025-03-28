@@ -17,9 +17,9 @@ This repository hosts a C++ implementation of a GUI chess game featuring a termi
   * **Tutorial**: Access a tutorial to learn or the rules of chess.
 
 ---
-## Types of AI
+## Types of oponents
 
-The AI opponents vary in difficulty:
+The opponents vary in difficulty:
   1) **Easy**: Implements random movements to simulate a novice player.
   2) **Medium**: Takes advantage of opportunities to capture pieces when possible.
   3) **Hard**: Utilizes advanced algorithms - alpha-beta pruning to make optimal moves, providing a formidable opponent.

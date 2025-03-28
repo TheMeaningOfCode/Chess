@@ -13,7 +13,7 @@ class Bishop : public Piece {
     ~Bishop();
     int get_value() override;
     string get_name() override;
-    set<pair<int, int>> move(const ChessBoard* board);
+    set<pair<int, int>> move(const ChessBoard* board) override;
     void add_in_direction(const ChessBoard* board, bool up, bool right, set<pair<int, int>>& valid_moves);
 };
 

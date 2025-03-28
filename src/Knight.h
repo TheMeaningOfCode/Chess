@@ -13,7 +13,7 @@ class Knight : public Piece {
     ~Knight();
     int get_value() override;
     string get_name() override;
-    set<pair<int, int>> move(const ChessBoard* board);
+    set<pair<int, int>> move(const ChessBoard* board) override;
 };
 
 #endif

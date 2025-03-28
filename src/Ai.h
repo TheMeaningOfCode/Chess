@@ -1,6 +1,8 @@
 #ifndef AI_H
 #define AI_H
 
+//not AI, opponent
+
 class AI;
 
 #include "Chessboard.h"

@@ -14,8 +14,8 @@ class Pawn : public Piece {
     int get_value() override;
     set<pair<int, int>> en_passant(const ChessBoard* board);
 
-    string get_name();
-    set<pair<int, int>> move(const ChessBoard* board);
+    string get_name() override;
+    set<pair<int, int>> move(const ChessBoard* board) override;
 };
 
 #endif
